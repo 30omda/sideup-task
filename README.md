@@ -35,13 +35,9 @@ This project is a full-featured e-commerce application that demonstrates modern 
 | **Vite**            | Fast bundler and dev server         |
 | **Redux Toolkit**   | Auth state management               |
 | **React Router**    | Routing between login and dashboard |
-| **GSAP**            | Advanced animations                 |
 | **Shadcn UI**       | Accessible, headless UI components  |
 | **Tailwind CSS**    | Utility-first CSS framework         |
 | **Lucide Icons**    | Beautiful SVG icons                 |
-| **Yup**             | Form validation                     |
-| **React Hook Form** | Lightweight form handling           |
-| **React Hot Toast** | Clean toast notifications           |
 
 ---
 
