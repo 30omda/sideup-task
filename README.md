@@ -144,16 +144,6 @@ project-root/
 
 ---
 
-## 📸 Animation Preview
-
-- 🟣 Main logo: slides in from the **right**
-- 🟣 Meetus logo: pops in from the **bottom**
-- 🟣 Login form: fades and slides **upward**
-- 🔁 All animations **trigger on refresh**
-- 🌐 Fully **responsive** with login form animation on small screens too
-
----
-
 ## Technology Stack
 
 - **Core Framework**: React 19.1.0
