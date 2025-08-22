@@ -50,7 +50,7 @@ export default function CategoryPage() {
                     dispatch(setInventory(productsToAdd));
                 }
 
-                
+
                 setPurchaseErrors({});
             } catch (error) {
                 console.error('Failed to initialize products:', error);
@@ -117,7 +117,7 @@ export default function CategoryPage() {
 
     const processedProducts = useProcessedProducts(products, inventory, cartItems, purchaseErrors);
 
-    
+
     useEffect(() => {
         return () => {
             dispatch(clearErrors());
@@ -138,10 +138,10 @@ export default function CategoryPage() {
     }
 
     return (
-        <div className="p-4">
+        <div className="w-full min-h-screen p-4 mx-auto container">
             <ErrorNotifications errors={errors} />
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 sm:gap-6">
                 {processedProducts.map((product) => (
                     <ProductCard
                         key={product.id}
