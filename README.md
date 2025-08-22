@@ -21,14 +21,9 @@ This project is a full-featured e-commerce application that demonstrates modern 
 
 - ✅ **Login with email & password**
 - ✅ **Redux Toolkit** for global state management
-- ✅ **Real-time validation** using `yup` + `react-hook-form`
 - ✅ **Authentication persistence** via `localStorage`
-- ✅ **GSAP animations** for logo and form transitions
 - ✅ **Responsive UI** across all devices
 - ✅ **Shadcn UI** components with modern styling
-- ✅ **Glassmorphism effect** on inputs
-- ✅ **Toasts** for feedback (success/error)
-- ✅ **Redirect handling** based on auth state
 
 ---
 
