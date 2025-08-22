@@ -154,19 +154,6 @@ project-root/
 
 ---
 
-## 🔐 Auth Flow
-
-- On login, credentials are submitted via `axios` to backend API.
-- If successful:
-  - `user`, `token`, and `isEmployee` are stored in `localStorage`.
-  - User is redirected to the dashboard.
-- If logged out:
-  - LocalStorage is cleared.
-  - User is sent back to `/login`.
-- Navigation logic is guarded based on user presence in `localStorage`.
-
----
-
 ## Technology Stack
 
 - **Core Framework**: React 19.1.0
