@@ -15,7 +15,7 @@ This project is a full-featured e-commerce application that demonstrates modern 
 5. [State Management](#state-management)
 6. [Routing System](#routing-system)
 7. [Getting Started](#getting-started)
-   👉 [https://task-sideup.vercel.app/](https://task-sideup.vercel.app/)
+   👉 [https://sideup-task-rho.vercel.app/](https://sideup-task-rho.vercel.app/)
 
 ## 🚀 Features
 
