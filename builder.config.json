@@ -1,0 +1,6 @@
+{
+  "command": "npm run dev",
+  "serverUrl": "https://www.figma.com/design/1H2h2XzoZeraS7y2EXJqm2/Regumapps_Design?node-id=604-1638&m=dev",
+  "authenticateProxy": false,
+  "commitMode": "commits"
+}
