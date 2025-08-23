@@ -12,7 +12,7 @@ import { EmptyState } from "@/components/Dashboard/EmptyState";
 const selectInventoryState = createSelector(
     [(state) => state?.inventory],
     (inventory) => {
-        
+
         return {
             items: inventory?.items || {},
             cartItems: inventory?.cartItems || {},
@@ -69,8 +69,8 @@ export default function Dashboard() {
 
     // --- Render ---
     return (
-        <div className="p-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
+        <div className="p-2 sm:p-4 mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-6 gap-3 sm:gap-4 md:gap-6 w-full">
                 {processedProducts.map((product) => (
                     <ProductCard
                         key={product.id}
@@ -83,7 +83,7 @@ export default function Dashboard() {
 
             {/* Show loading more */}
             {visibleCount < simulatedProducts.length && (
-                <p className="text-center mt-6 text-gray-500">Loading more products...</p>
+                <p className="text-center mt-6 text-gray-500 text-sm sm:text-base">Loading more products...</p>
             )}
         </div>
     );

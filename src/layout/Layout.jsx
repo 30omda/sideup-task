@@ -24,7 +24,7 @@ const Layout = () => {
       <SidebarProvider>
         <AppSidebar />
         <SidebarInset>
-          <header className="flex max-w-screen h-16 shrink-0 items-center gap-2 border-b justify-between px-3">
+          <header className="sticky top-0 z-50 flex max-w-screen h-16 shrink-0 items-center gap-2 border-b justify-between px-3 bg-background">
             {/* Left side (sidebar + breadcrumb) */}
             <div className="flex items-center gap-2">
               <SidebarTrigger />

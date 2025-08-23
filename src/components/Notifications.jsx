@@ -21,12 +21,14 @@ const NotificationsCart = () => {
     const purchasedItems = useSelector(state => state?.inventory?.purchasedItems || [])
     const inventoryItems = useSelector(state => state?.inventory?.items || {})
 
-
     const totalItems = purchasedItems.reduce((total, item) => total + item.quantity, 0)
-
-
     const unreadNotifications = notifications.filter(notification => !notification.read)
 
+    // Fix image URL function (same as Dashboard)
+    const fixImageUrl = (url) => {
+        if (!url || typeof url !== 'string') return "";
+        return url.replace(/\.jpg|\.jpeg/gi, "t.png");
+    };
 
     const cartItemsWithDetails = purchasedItems.map(item => {
         const inventoryItem = inventoryItems[item.id]
@@ -37,18 +39,16 @@ const NotificationsCart = () => {
             title: product.title || item.title || 'Unknown Product',
             price: product.price || item.price || 0,
             category: product.category || 'Uncategorized',
-            stockLevel: inventoryItem?.stock || Math.floor(Math.random() * 20) + 1, // Mock stock level
-            image: product.image || null
+            stockLevel: inventoryItem?.stock || Math.floor(Math.random() * 20) + 1,
+            image: product.image ? fixImageUrl(product.image) : null
         }
     })
-
 
     const getStockStatusColor = (stock) => {
         if (stock === 0) return 'bg-red-100 text-red-800'
         if (stock <= 5) return 'bg-yellow-100 text-yellow-800'
         return 'bg-green-100 text-green-800'
     }
-
 
     const getStockStatusText = (stock) => {
         if (stock === 0) return 'Out of Stock'
@@ -121,15 +121,24 @@ const NotificationsCart = () => {
                                         <div className="w-full p-3 hover:bg-gray-50 rounded-md">
                                             <div className="flex items-start gap-3">
                                                 {/* Product Image */}
-                                                {item.image && (
-                                                    <div className="w-12 h-12 bg-gray-100 rounded-md flex-shrink-0 overflow-hidden">
+                                                <div className="w-12 h-12 bg-gray-100 rounded-md flex-shrink-0 overflow-hidden flex items-center justify-center">
+                                                    {item.image ? (
                                                         <img
                                                             src={item.image}
                                                             alt={item.title}
                                                             className="w-full h-full object-cover"
+                                                            onError={(e) => {
+                                                                e.target.style.display = 'none';
+                                                                e.target.nextSibling.style.display = 'flex';
+                                                            }}
                                                         />
+                                                    ) : null}
+                                                    {/* Fallback icon when no image or image fails to load */}
+                                                    <div className={`w-full h-full flex items-center justify-center text-gray-400 ${item.image ? 'hidden' : 'flex'}`}>
+                                                        <Package className="h-6 w-6" />
                                                     </div>
-                                                )}
+                                                </div>
+
                                                 <div className="flex-1 min-w-0">
                                                     <div className="flex justify-between items-start">
                                                         <h4 className="font-medium text-sm text-gray-900 truncate">
@@ -178,19 +187,6 @@ const NotificationsCart = () => {
                                                             >
                                                                 {getStockStatusText(item.stockLevel)}
                                                             </Badge>
-                                                        </div>
-                                                        <div className="flex items-center gap-2">
-                                                            <Button
-                                                                variant="ghost"
-                                                                size="sm"
-                                                                onClick={(e) => {
-                                                                    e.preventDefault();
-                                                                    dispatch(removeFromCart({ productId: item.id, quantity: 1 }));
-                                                                }}
-                                                                className="h-6 px-2 text-xs text-red-600 hover:text-red-700 hover:bg-red-50"
-                                                            >
-                                                                Remove
-                                                            </Button>
                                                         </div>
                                                     </div>
 

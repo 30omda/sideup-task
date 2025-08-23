@@ -78,22 +78,6 @@ export default function CategoryPage() {
                 return;
             }
 
-            // Get current stock from Redux store (which is synced with localStorage)
-            const inventoryStock = inventory[product.id]?.stock;
-            const currentStock = typeof inventoryStock === 'number'
-                ? inventoryStock
-                : (product.stock || 20); // Fallback to product stock or default 20
-            const cartQuantity = cartItems[product.id]?.quantity || 0;
-
-            // Check if we can add more to cart
-            if (currentStock <= cartQuantity) {
-                setPurchaseErrors(prev => ({
-                    ...prev,
-                    [product.id]: 'Product is out of stock'
-                }));
-                return;
-            }
-
             // Clear any previous error for this product
             setPurchaseErrors(prev => {
                 const updated = { ...prev };
@@ -103,9 +87,6 @@ export default function CategoryPage() {
 
             // Dispatch to Redux (this will also update localStorage)
             dispatch(decrementStock(product.id));
-
-            // Process the purchase
-            dispatch(decrementStock(product.id));
         } catch (error) {
             console.error('Purchase failed:', error);
             setPurchaseErrors(prev => ({
@@ -113,7 +94,7 @@ export default function CategoryPage() {
                 [product?.id || 'unknown']: `Purchase failed: ${error.message}`
             }));
         }
-    }, [inventory, cartItems, dispatch]);
+    }, [dispatch]);
 
     const processedProducts = useProcessedProducts(products, inventory, cartItems, purchaseErrors);
 
@@ -138,10 +119,10 @@ export default function CategoryPage() {
     }
 
     return (
-        <div className="w-full min-h-screen p-4 mx-auto container">
+        <div className="w-full min-h-screen p-2 sm:p-4 mx-auto">
             <ErrorNotifications errors={errors} />
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 sm:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-6 gap-3 sm:gap-4 md:gap-6">
                 {processedProducts.map((product) => (
                     <ProductCard
                         key={product.id}
